@@ -2,8 +2,8 @@
 This module holds the classes required to manage game animations
 """
 from itertools import cycle
-from random import randint
 from core.asset_manager import Assets
+import secrets
 
 
 class Animation:
@@ -29,7 +29,7 @@ class Animation:
         """
         :return: return the correct idle frame with random idling based on randint range output and last index
         """
-        if self.idle_frame_index[1] == 0 and randint(0, 100) < 90:
+        if self.idle_frame_index[1] == 0 and secrets.SystemRandom().randint(0, 100) < 90:
             return self.idling[self.idle_frame_index[1]]
         self.idle_frame_index[1] = next(self.idle_frame_index[0])
         return self.idling[self.idle_frame_index[1]]
